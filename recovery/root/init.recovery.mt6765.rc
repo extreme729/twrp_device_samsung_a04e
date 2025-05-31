@@ -1,0 +1,33 @@
+# from vendor/etc/init/vendor.samsung.hardware.sysinput@1.1-service.rc
+on early-boot
+    # from vendor/etc/init/init.md.rc
+    # adding more ts lkm (citty2029)
+    insmod /vendor/lib/bt_drv_connac1x.ko
+    insmod /vendor/lib/connfem.ko
+    insmod /vendor/lib/fmradio_drv_mt6631.ko
+    insmod /vendor/lib/fpsgo.ko
+    insmod /vendor/lib/gps_drv.ko
+    insmod /vendor/lib/met.ko
+    insmod /vendor/lib/trace_mmstat.ko
+    insmod /vendor/lib/wlan_drv_gen4m.ko
+    insmod /vendor/lib/wmt_chrdev_wifi.ko
+    insmod /vendor/lib/wmt_drv.ko
+   
+on init
+    setprop sys.usb.configfs 1
+    setprop sys.usb.ffs.aio_compat 1
+
+on fs && property:ro.debuggable=0
+    # distinguish USB shoulde connect or not, i.e. CDP vs SDP
+    write /sys/class/udc/musb-hdrc/device/cmode 2
+    # set charging free due to it wait for USB activation
+    start adbd
+
+on post-fs
+    # Support A/B feature for emmc boot region
+    symlink /dev/block/sda /dev/block/mmcblk0boot0
+    symlink /dev/block/sdb /dev/block/mmcblk0boot1
+    symlink /dev/block/mmcblk0boot0 /dev/block/platform/bootdevice/by-name/preloader_a
+    symlink /dev/block/mmcblk0boot1 /dev/block/platform/bootdevice/by-name/preloader_b
+
+    exec u:r:update_engine:s0 root root -- /system/bin/mtk_plpath_utils
