@@ -1,10 +1,10 @@
 # mount point	fstype		device			device2				flags
 # Logical partitions
-system	/system		f2fs							flags=display="System";logical;
-vendor	/vendor		f2fs								flags=display="Vendor";logical;
-product	/product	f2fs								flags=display="Product";logical;
-odm		/odm		f2fs								flags=display="ODM";logical;
-system_ext		/system_ext		f2fs								flags=display="System_ext";logical;
+system	/system		f2fs							flags=display="System";logical;flashimg=1
+vendor	/vendor		f2fs								flags=display="Vendor";logical;flashimg=1
+product	/product	f2fs								flags=display="Product";logical;flashimg=1
+odm		/odm		f2fs								flags=display="ODM";logical;flashimg=1
+system_ext		/system_ext		f2fs								flags=display="System_ext";logical;flashimg=1
 
 # Symlinked partitions
 /system_image	emmc		/dev/block/mapper/system					flags=backup=1;wipeingui;flashimg=1;display="System Image";
