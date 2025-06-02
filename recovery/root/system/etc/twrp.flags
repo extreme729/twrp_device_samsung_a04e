@@ -7,11 +7,12 @@ odm		/odm		f2fs								flags=display="ODM";logical;flashimg=true;flashimg=1
 system_ext		/system_ext		f2fs								flags=display="System_ext";logical;flashimg=true;flashimg=1
 
 # Symlinked partitions
-/system	emmc		/dev/block/mapper/system					flags=backup=1;wipeingui;display="System Image";flashimg=true;flashimg=1
-/vendor	emmc		/dev/block/mapper/vendor					flags=backup=1;wipeingui;display="Vendor Image";flashimg=true;flashimg=1
-/product	emmc		/dev/block/mapper/product					flags=backup=1;wipeingui;display="Product Image";flashimg=true;flashimg=1
-/odm		emmc		/dev/block/mapper/odm					flags=backup=1;wipeingui;display="ODM Image";flashimg=true;flashimg=1
-/system_ext		emmc		/dev/block/mapper/system_ext				flags=backup=1;wipeingui;display="System_ext Image";flashimg=true;flashimg=1
+/system_image	emmc		/dev/block/mapper/system					flags=backup=1;display="System Image"
+/vendor_image	emmc		/dev/block/mapper/vendor					flags=backup=1;display="Vendor Image"
+/product_image	emmc		/dev/block/mapper/product					flags=backup=1;display="Product Image"
+/odm_image		emmc		/dev/block/mapper/odm					flags=backup=1; display="Odm Image"
+/system_ext_image		emmc		/dev/block/mapper/system_ext				flags=backup=1;display="System_ext Image"
+/super_image		emmc		/dev/block/by-name/super				flags=backup=1;display="Super"
 
 # Physical partitions - Data
 /optics			ext4		/dev/block/by-name/optics							flags=display="Optics"
@@ -29,8 +30,8 @@ system_ext		/system_ext		f2fs								flags=display="System_ext";logical;flashimg
 
 #Auto-generated code by FOTA Portal
 /gz1			emmc		/dev/block/by-name/gz1
-/optics_image	emmc		/dev/block/by-name/optics							flags=backup=1;display="Optics Image";flashimg=1
-/param			emmc		/dev/block/by-name/param							flags=backup=1;display="Param"
+/optics_image	emmc		/dev/block/by-name/optics							flags=display="Optics Image";flashimg=1
+/param			emmc		/dev/block/by-name/param							flags=display="Param"
 
 
 # Physical partitions - Important Data - Must Backup
@@ -47,15 +48,15 @@ system_ext		/system_ext		f2fs								flags=display="System_ext";logical;flashimg
 /md1img			emmc		/dev/block/platform/bootdevice/by-name/md1img		flags=backup=1;display="Modem"
 
 # Physical partitions - Backupable
-/boot			emmc		/dev/block/by-name/boot								flags=backup=1;display="Boot Image";flashimg=1
-/recovery		emmc		/dev/block/by-name/recovery							flags=backup=1;display="Recovery Image";flashimg=1
+/boot			emmc		/dev/block/by-name/boot								flags=backup=1;display="Boot Image"
+/recovery		emmc		/dev/block/by-name/recovery							flags=backup=1;display="Recovery Image"
 /prism_image	emmc		/dev/block/by-name/prism							flags=backup=1;display="Prism Image";flashimg=1
-/up_param		emmc		/dev/block/by-name/up_param							flags=backup=1;display="Logo";flashimg=1
+/up_param		emmc		/dev/block/by-name/up_param							flags=backup=1;display="Logo"
 
 # Vbmeta
-/vbmeta     	   emmc      /dev/block/platform/bootdevice/by-name/vbmeta    		 flags=backup=1;display="Vbmeta";flashimg=1
-/vbmeta_system     emmc      /dev/block/platform/bootdevice/by-name/vbmeta_system    flags=backup=1;display="Vbmeta System";flashimg=1
-/vbmeta_vendor     emmc      /dev/block/platform/bootdevice/by-name/vbmeta_vendor    flags=backup=1;display="Vbmeta Vendor";flashimg=1
+/vbmeta     	   emmc      /dev/block/platform/bootdevice/by-name/vbmeta    		 flags=display="Vbmeta";flashimg=1
+/vbmeta_system     emmc      /dev/block/platform/bootdevice/by-name/vbmeta_system    flags=display="Vbmeta System";flashimg=1
+/vbmeta_vendor     emmc      /dev/block/platform/bootdevice/by-name/vbmeta_vendor    flags=display="Vbmeta Vendor";flashimg=1
 
 # External storage
 /external_sd	vfat		/dev/block/mmcblk1p1	/dev/block/mmcblk1			flags=display="Micro SD Card";storage;wipeingui;removable
