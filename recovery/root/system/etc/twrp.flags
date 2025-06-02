@@ -7,11 +7,11 @@ odm		/odm		f2fs								flags=display="ODM";logical;flashimg=true;flashimg=1
 system_ext		/system_ext		f2fs								flags=display="System_ext";logical;flashimg=true;flashimg=1
 
 # Symlinked partitions
-/system_image	emmc		/dev/block/mapper/system					flags=backup=1;wipeingui;display="System Image";flashimg=true;flashimg=1
-/vendor_image	emmc		/dev/block/mapper/vendor					flags=backup=1;wipeingui;display="Vendor Image";flashimg=true;flashimg=1
-/product_image	emmc		/dev/block/mapper/product					flags=backup=1;wipeingui;display="Product Image";flashimg=true;flashimg=1
-/odm_image		emmc		/dev/block/mapper/odm					flags=backup=1;wipeingui;display="ODM Image";flashimg=true;flashimg=1
-/system_ext_image		emmc		/dev/block/mapper/system_ext				flags=backup=1;wipeingui;display="System_ext Image";flashimg=true;flashimg=1
+/system	emmc		/dev/block/mapper/system					flags=backup=1;wipeingui;display="System Image";flashimg=true;flashimg=1
+/vendor	emmc		/dev/block/mapper/vendor					flags=backup=1;wipeingui;display="Vendor Image";flashimg=true;flashimg=1
+/product	emmc		/dev/block/mapper/product					flags=backup=1;wipeingui;display="Product Image";flashimg=true;flashimg=1
+/odm		emmc		/dev/block/mapper/odm					flags=backup=1;wipeingui;display="ODM Image";flashimg=true;flashimg=1
+/system_ext		emmc		/dev/block/mapper/system_ext				flags=backup=1;wipeingui;display="System_ext Image";flashimg=true;flashimg=1
 
 # Physical partitions - Data
 /optics			ext4		/dev/block/by-name/optics							flags=display="Optics"
