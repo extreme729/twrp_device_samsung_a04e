@@ -119,7 +119,7 @@ PLATFORM_VERSION := 16.1.0
 ## TWRP Configuration ##
 
 # Common
-TW_DEVICE_VERSION := Rissu_A04-v2
+TW_DEVICE_VERSION := Citty_mt6765
 TW_THEME := portrait_hdpi
 TW_EXTRA_LANGUAGES := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
@@ -135,6 +135,12 @@ TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel/brightness"
 TW_FRAMERATE := 60
 TW_Y_OFFSET := 50
 TW_H_OFFSET := -50
+
+#touch fix
+TW_LOAD_VENDOR_MODULES := $(shell echo \"$(shell ls $(DEVICE_PATH)/prebuilt/modules)\")
+TW_LOAD_VENDOR_MODULES := "bt_drv_connac1x.ko connfem.ko fmradio_drv_mt6631.ko fpsgo.ko gps_drv.ko met.ko trace_mmstat.ko wlan_drv_gen4m.ko wmt_chrdev_wifi.ko wmt_drv.ko"
+TW_LOAD_VENDOR_BOOT_MODULES := true
+TW_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
 
 # Samsung
 TW_HAS_DOWNLOAD_MODE := true
