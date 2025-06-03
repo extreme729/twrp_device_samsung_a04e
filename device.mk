@@ -6,7 +6,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-LOCAL_PATH := device/samsung/a04e
+LOCAL_PATH := device/samsung/a04
 
 # fastbootd
 PRODUCT_PACKAGES += \

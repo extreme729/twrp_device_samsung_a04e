@@ -6,12 +6,14 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/samsung/a04e
+DEVICE_PATH := device/samsung/a04
 
-# For building with minimal manifest
+# General build option
 ALLOW_MISSING_DEPENDENCIES := true
+BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 
 # Platform
+TARGET_BOOTLOADER_BOARD_NAME := a04
 TARGET_BOARD_PLATFORM := mt6765
 
 # Architecture
@@ -38,10 +40,9 @@ ENABLE_SCHEDBOOST := true
 TARGET_USES_64_BIT_BINDER := true
 
 # APEX
-#DEXPREOPT_GENERATE_APEX_IMAGE := true
+DEXPREOPT_GENERATE_APEX_IMAGE := true
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := a04
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 
@@ -65,13 +66,11 @@ BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_KERNEL_SEPARATED_DTBO := true
-#TARGET_KERNEL_CONFIG := a04_defconfig
-#TARGET_KERNEL_SOURCE := kernel/samsung/a04
 
 # Kernel - prebuilt
 TARGET_FORCE_PREBUILT_KERNEL := true
 ifeq ($(TARGET_FORCE_PREBUILT_KERNEL),true)
-TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/luminous_twilight_kernel
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
 BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
 BOARD_INCLUDE_DTB_IN_BOOTIMG := 
@@ -117,13 +116,10 @@ PLATFORM_SECURITY_PATCH := 2099-12-31
 VENDOR_SECURITY_PATCH := 2099-12-31
 PLATFORM_VERSION := 16.1.0
 
-# Workaround
-BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
-
 ## TWRP Configuration ##
 
 # Common
-TW_DEVICE_VERSION := Citty2029
+TW_DEVICE_VERSION := Rissu_A04-v2
 TW_THEME := portrait_hdpi
 TW_EXTRA_LANGUAGES := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
@@ -131,6 +127,7 @@ TW_USE_TOOLBOX := true
 TW_USE_NEW_MINADBD := true
 TW_EXCLUDE_APEX := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true
+TW_NO_LEGACY_PROPS := true
 
 # Display
 TW_SCREEN_BLANK_ON_BOOT := true
@@ -138,13 +135,6 @@ TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel/brightness"
 TW_FRAMERATE := 60
 TW_Y_OFFSET := 50
 TW_H_OFFSET := -50
-TW_MAX_BRIGHTNESS := 100
-
-#touch fix
-TW_LOAD_VENDOR_MODULES := $(shell echo \"$(shell ls $(DEVICE_PATH)/prebuilt/modules)\")
-TW_LOAD_VENDOR_MODULES := "bt_drv_connac1x.ko connfem.ko fmradio_drv_mt6631.ko fpsgo.ko gps_drv.ko met.ko trace_mmstat.ko wlan_drv_gen4m.ko wmt_chrdev_wifi.ko wmt_drv.ko"
-TW_LOAD_VENDOR_BOOT_MODULES := true
-TW_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
 
 # Samsung
 TW_HAS_DOWNLOAD_MODE := true
@@ -160,3 +150,6 @@ TW_INCLUDE_FBE_METADATA_DECRYPT := false
 
 # NTFS 3G
 TW_INCLUDE_NTFS_3G := true
+
+# Media Transfer Protocol
+TW_MTP_DEVICE := "Galaxy A04"

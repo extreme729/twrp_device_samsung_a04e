@@ -1,18 +1,3 @@
-# from vendor/etc/init/vendor.samsung.hardware.sysinput@1.1-service.rc
-on early-boot
-    # from vendor/etc/init/init.md.rc
-    # adding more ts lkm (citty2029)
-    insmod /vendor/lib/bt_drv_connac1x.ko
-    insmod /vendor/lib/connfem.ko
-    insmod /vendor/lib/fmradio_drv_mt6631.ko
-    insmod /vendor/lib/fpsgo.ko
-    insmod /vendor/lib/gps_drv.ko
-    insmod /vendor/lib/met.ko
-    insmod /vendor/lib/trace_mmstat.ko
-    insmod /vendor/lib/wlan_drv_gen4m.ko
-    insmod /vendor/lib/wmt_chrdev_wifi.ko
-    insmod /vendor/lib/wmt_drv.ko
-   
 on init
     setprop sys.usb.configfs 1
     setprop sys.usb.ffs.aio_compat 1
