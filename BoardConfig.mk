@@ -135,6 +135,7 @@ TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel/brightness"
 TW_FRAMERATE := 60
 TW_Y_OFFSET := 50
 TW_H_OFFSET := -50
+TW_MAX_BRIGHTNESS := 300
 
 #touch fix
 TW_LOAD_VENDOR_MODULES := $(shell echo \"$(shell ls $(DEVICE_PATH)/prebuilt/modules)\")
